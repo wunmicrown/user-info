@@ -14,3 +14,7 @@ app.use((req, res, next) => {
     console.log('Request Body:', req.body);
     next();
   });
+
+  const users = [
+      { username: 'WunmiCrown117', password: '123456789' },
+    ];
