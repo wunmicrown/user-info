@@ -18,3 +18,18 @@ app.use((req, res, next) => {
   const users = [
       { username: 'WunmiCrown117', password: '123456789' },
     ];
+    app.post('/login', (req, res) => {
+        try {
+          const { username, password } = req.body;
+                const user = users.find(u => u.username === username && u.password === password);
+      
+          if (user) {
+            res.json({ success: true, message: 'Authentication successful' });
+          } else {
+            res.status(401).json({ success: false, message: 'Authentication failed' });
+          }
+        } catch (error) {
+          console.error('Error processing request:', error);
+          res.status(500).json({ success: false, message: 'Internal server error' });
+        }
+      });
